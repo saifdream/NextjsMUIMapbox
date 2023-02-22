@@ -6,16 +6,18 @@ import Box from '@mui/material/Box';
 import { grey } from '@mui/material/colors';
 import CustomButton from './CustomButton';
 
+const sections = [
+  { title: 'Field', url: '#' },
+  { title: 'Water Management', url: '#' },
+  { title: 'AnalyZe', url: '#' },
+];
+
 interface HeaderProps {
-  sections: ReadonlyArray<{
-    title: string;
-    url: string;
-  }>;
   title: string;
 }
 
 export default function Header(props: HeaderProps) {
-  const { sections, title } = props;
+  const { title } = props;
 
   return (
     <React.Fragment>

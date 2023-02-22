@@ -1,15 +1,15 @@
+import 'mapbox-gl/dist/mapbox-gl.css';
+
 import { useCallback, useEffect, useState } from "react";
 import { grey } from "@mui/material/colors";
 import Box from "@mui/material/Box";
-
 import Map, {Layer, Source} from 'react-map-gl';
-
-import 'mapbox-gl/dist/mapbox-gl.css';
 import { dataLayer } from "@/map-style";
 import ControlPanel from "./ControlPanel";
 import StateDetails from "./StateDetails";
 
 const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAP_BOX;
+const GEO_JSON_URL = 'https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_110m_admin_1_states_provinces_shp.geojson';
 
 export default function _Map() {
     const [data, setData] = useState<any>(null);
@@ -27,17 +27,21 @@ export default function _Map() {
 
     useEffect(() => {
         (async () => {
-            const res = await fetch('https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_110m_admin_1_states_provinces_shp.geojson');
-            const geoData = await res.json();
-            setData(geoData);
-        })()
-    })
+            try {
+                const res = await fetch(GEO_JSON_URL);
+                const geoData = await res.json();
+                setData(geoData);
+            } catch(error) {
+                console.error(error);
+            }
+        })();
+    });
 
     return (
         <Box 
             component="div" 
             sx={{
-              height: 400,
+              height: 450,
               bgcolor: grey[300],
               mt: 2
             }}
@@ -49,7 +53,7 @@ export default function _Map() {
                     longitude: -100,
                     zoom: 3
                 }}
-                // style={{width: 800, height: 600}}
+                style={{height: 450}}
                 mapStyle="mapbox://styles/mapbox/streets-v12"
                 mapboxAccessToken={MAPBOX_TOKEN}
                 interactiveLayerIds={['data']}
