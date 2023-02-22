@@ -4,6 +4,8 @@ import { grey } from "@mui/material/colors";
 import IconButton from "@mui/material/IconButton";
 import { OpenInFull } from "@mui/icons-material";
 import Stack from "@mui/material/Stack";
+import CustomButton from "./utility/CustomButton";
+import Tooltip from "@mui/material/Tooltip";
 
 const fields = [
     { label: 'Field Monitor' },
@@ -20,25 +22,34 @@ export default function Graph() {
             <Box 
                 key={field.label}
                 sx={{
-                height: 30, 
-                bgcolor: grey[300], 
-                display: 'flex', 
-                justifyContent: 'center', 
-                alignItems: 'center',
-                px: 1
+                    height: 30, 
+                    bgcolor: grey[300], 
+                    display: 'flex', 
+                    justifyContent: 'center', 
+                    alignItems: 'center',
                 }}
             >
-                <Typography fontWeight={600} fontSize={15}>{field.label}</Typography>
+                <Tooltip title={field.label}>
+                    <CustomButton 
+                        sx={{
+                            fontSize: 14, 
+                            fontWeight: 600, 
+                            height: 30, 
+                            width: 115
+                        }}
+                    >
+                        {field.label}
+                    </CustomButton>
+                </Tooltip>
             </Box>
             ))}
         </Stack>
         <Box
             sx={{
-            mt: 1,
-            height: 180, 
-            minHeight: 180, 
-            bgcolor: grey[700],
-            overflow: 'auto',
+                mt: 1,
+                height: 180,
+                bgcolor: grey[700],
+                overflow: 'auto',
             }}
         >
             <Box minHeight={200} display="flex" justifyContent="center" alignItems="center">

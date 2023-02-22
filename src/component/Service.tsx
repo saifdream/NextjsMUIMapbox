@@ -1,7 +1,8 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { grey } from "@mui/material/colors";
-import CustomButton from "./CustomButton";
+import CustomButton from "./utility/CustomButton";
+import Tooltip from "@mui/material/Tooltip";
 
 export default function Service() {
   return (
@@ -23,7 +24,16 @@ export default function Service() {
       <Typography sx={{ p: 1, flexShrink: 0 }}>
         - Selected Field Information
       </Typography>
-      <CustomButton>Request Service</CustomButton>
+      <Tooltip title="Request Service">
+        <CustomButton 
+          sx={{
+            height: 30,
+            width: 200
+          }}
+        >
+          Request Service
+        </CustomButton>
+      </Tooltip>
     </Box>
   )
 }

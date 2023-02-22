@@ -22,8 +22,7 @@ export default function DataField() {
                 sx={{
                     display: 'flex',
                     justifyContent: 'space-around',
-                    height: 180, 
-                    minHeight: 180, 
+                    minHeight: 180,
                     bgcolor: teal[50], 
                     p: 1,
                     mt: 1

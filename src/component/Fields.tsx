@@ -19,13 +19,12 @@ export default function Fields() {
 
             <Box 
                 sx={{
-                height: 180, 
-                minHeight: 180, 
-                bgcolor: grey[300], 
-                display: 'flex', 
-                justifyContent: 'center', 
-                alignItems: 'center',
-                mt: 1
+                    minHeight: 180, 
+                    bgcolor: grey[300], 
+                    display: 'flex', 
+                    justifyContent: 'center', 
+                    alignItems: 'center',
+                    mt: 1
                 }}
             >
                 <Typography fontWeight={500}>Fields Dropdown View</Typography>

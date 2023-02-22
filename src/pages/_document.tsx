@@ -14,9 +14,7 @@ export default class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           />
-          {/* <link href='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css' rel='stylesheet' /> */}
           {this.props.styles}
-          {/* <script src='https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js' defer></script> */}
         </Head>
         <body>
           <Main />
