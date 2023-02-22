@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { grey } from "@mui/material/colors";
 import Box from "@mui/material/Box";
 
@@ -11,7 +11,8 @@ import StateDetails from "./StateDetails";
 
 const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAP_BOX;
 
-export default function _Map({data}: any) {
+export default function _Map() {
+    const [data, setData] = useState<any>(null);
     const [hoverInfo, setHoverInfo] = useState(null);
     
     const onHover = useCallback((event: any) => {
@@ -23,6 +24,14 @@ export default function _Map({data}: any) {
         const hoveredFeature = features && features[0];
         setHoverInfo(hoveredFeature && {feature: hoveredFeature, x, y});
     }, []);
+
+    useEffect(() => {
+        (async () => {
+            const res = await fetch('https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_110m_admin_1_states_provinces_shp.geojson');
+            const geoData = await res.json();
+            setData(geoData);
+        })()
+    })
 
     return (
         <Box 

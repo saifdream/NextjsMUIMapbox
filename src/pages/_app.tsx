@@ -9,6 +9,7 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+import Head from 'next/head';
 
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
@@ -23,6 +24,11 @@ const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
 
   return (
     <CacheProvider value={emotionCache}>
+      <Head>
+        <title>Next MUI | Map Box</title>
+        <meta name="description" content="Map Box implementation using typescript, next js, material ui, and react js" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Component {...pageProps} />

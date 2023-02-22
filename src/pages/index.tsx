@@ -27,14 +27,11 @@ const Home: NextPage = (props: any) => {
     <>
       <Head>
         <title>Next MUI | Map Box</title>
-        <meta name="description" content="Map Box implementation using typescript, next js, material ui, and react js" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container>
         <Header sections={sections} title="Global Serach"/>
         <Box component="main">
-          <Map data={props.geoData}/>
+          <Map/>
           <Service/>
 
           <Box sx={{ flexGrow: 1, mt: 2 }}>
@@ -149,12 +146,6 @@ const Home: NextPage = (props: any) => {
       </Container>
     </>
   )
-}
-
-Home.getInitialProps = async (ctx) => {
-  const res = await fetch('https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_110m_admin_1_states_provinces_shp.geojson')
-  const geoData = await res.json()
-  return { geoData }
 }
 
 export default Home;
